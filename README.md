@@ -3,7 +3,6 @@
 ![Java Version](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot)
 ![Status](https://img.shields.io/badge/Status-Concluído-brightgreen?style=for-the-badge)
-![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)
 
 Projeto backend desenvolvido com **Spring Boot** para estudo de **CRUD**, **Spring Data JPA** e **arquitetura em camadas**.
 

@@ -25,6 +25,11 @@ public class UserService {
         return userConverter.paraDTOResponse(dto);
     }
 
-    //
+    // Buscar Por email
+    public UserDTOResponse buscarPorEmail(String email){
+        User entity = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Email nao encontrado"));
+        return userConverter.paraDTO(entity);
+    }
 
 }

@@ -36,5 +36,19 @@ public class UserService {
     public void deletarPorEmail(String email){
         userRepository.deleteByEmail(email);
     }
+    
+    // Atualizar Por id
+    public UserDTOResponse atualizarPorId(Long id, UserDTORequest dto){
+        User entity = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Id nao encontrado"));
+
+        entity.setEmail(dto.getEmail() != null ? dto.getEmail() : entity.getEmail());
+        entity.setNome(dto.getNome() != null ? dto.getNome() : entity.getNome());
+
+        userRepository.save(entity);
+
+        return userConverter.paraDTO(entity);
+
+    }
 
 }

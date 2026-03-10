@@ -34,5 +34,11 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping
+    public ResponseEntity<UserDTOResponse> atualizaPorId(@RequestParam("id") Long id,
+                                                         @RequestBody UserDTORequest dto){
+        return ResponseEntity.ok(userService.atualizarPorId(id,dto));
+    }
+
 
 }

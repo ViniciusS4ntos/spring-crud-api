@@ -32,4 +32,9 @@ public class UserService {
         return userConverter.paraDTO(entity);
     }
 
+    // Deletar Por Email
+    public void deletarPorEmail(String email){
+        userRepository.deleteByEmail(email);
+    }
+
 }

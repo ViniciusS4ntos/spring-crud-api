@@ -1,13 +1,9 @@
 package com.vinicius.spring_crud_api.controller;
 
-
 import com.vinicius.spring_crud_api.business.UserService;
-import com.vinicius.spring_crud_api.controller.dtos.UserDTORequest;
-import com.vinicius.spring_crud_api.controller.dtos.UserDTOResponse;
-import com.vinicius.spring_crud_api.infrastructure.entity.User;
-import lombok.Getter;
+import com.vinicius.spring_crud_api.controller.dtos.in.UserDTORequest;
+import com.vinicius.spring_crud_api.controller.dtos.out.UserDTOResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,21 +20,19 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<UserDTOResponse> buscarPorEmail(@RequestParam("email") String email){
+    public ResponseEntity<UserDTOResponse> buscarPorEmail(@RequestParam("email") String email) {
         return ResponseEntity.ok(userService.buscarPorEmail(email));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deletarPorEmail(@RequestParam("email") String email){
+    public ResponseEntity<Void> deletarPorEmail(@RequestParam("email") String email) {
         userService.deletarPorEmail(email);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
     public ResponseEntity<UserDTOResponse> atualizaPorId(@RequestParam("id") Long id,
-                                                         @RequestBody UserDTORequest dto){
-        return ResponseEntity.ok(userService.atualizarPorId(id,dto));
+                                                         @RequestBody UserDTORequest dto) {
+        return ResponseEntity.ok(userService.atualizarPorId(id, dto));
     }
-
-
 }

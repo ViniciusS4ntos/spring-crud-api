@@ -1,4 +1,4 @@
-package com.vinicius.spring_crud_api.controller.dtos;
+package com.vinicius.spring_crud_api.controller.dtos.in;
 
 
 import jakarta.persistence.Column;
@@ -14,9 +14,6 @@ import lombok.*;
 @Getter
 @Builder
 public class UserDTORequest {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
 
     @Column(name = "email", unique = true)
     private String email;

@@ -1,10 +1,9 @@
 package com.vinicius.spring_crud_api.controller;
 
-
 import com.vinicius.spring_crud_api.business.UserService;
-import com.vinicius.spring_crud_api.infrastructure.entity.User;
+import com.vinicius.spring_crud_api.controller.dtos.in.UserDTORequest;
+import com.vinicius.spring_crud_api.controller.dtos.out.UserDTOResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,27 +15,24 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> salvarUsuario(@RequestBody User user){
-        userService.saveUser(user);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserDTOResponse> salvarUsuario(@RequestBody UserDTORequest user) {
+        return ResponseEntity.ok(userService.salvarUsuario(user));
     }
 
     @GetMapping
-    public ResponseEntity<User> buscarUsuarioPorEmail(@RequestParam String email){
-        return ResponseEntity.ok(userService.findUserByEmail(email));
+    public ResponseEntity<UserDTOResponse> buscarPorEmail(@RequestParam("email") String email) {
+        return ResponseEntity.ok(userService.buscarPorEmail(email));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deletarUsuarioPorEmail(@RequestParam String email){
-         userService.deleteByEmail(email);
+    public ResponseEntity<Void> deletarPorEmail(@RequestParam("email") String email) {
+        userService.deletarPorEmail(email);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
-    public ResponseEntity<Void> atualizarUsuario(@RequestParam Integer id,
-                                                 @RequestBody User user){
-        userService.updateById(id, user);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserDTOResponse> atualizaPorId(@RequestParam("id") Long id,
+                                                         @RequestBody UserDTORequest dto) {
+        return ResponseEntity.ok(userService.atualizarPorId(id, dto));
     }
-
 }

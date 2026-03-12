@@ -19,7 +19,7 @@ Arquitetura em camadas para melhor organização e manutenção:
 - `infrastructure/entity` — entidades JPA  
 - `infrastructure/repository` — acesso a dados com Spring Data  
 - `main` — inicialização da aplicação  
-
+---
 ## 🛠️ Tecnologias Utilizadas
 
 * **Java 21**
@@ -27,20 +27,16 @@ Arquitetura em camadas para melhor organização e manutenção:
 * **Spring Data JPA**
 * **H2 Database**
 * **Maven**
-
-## 🚀 Como Executar
-
-### Pré-requisitos
-* **JDK 21**
-* **Maven**
-
-### Passo a passo
-
-```bash
-git clone https://github.com/seu-usuario/spring-crud-api.git
-cd spring-crud-api
-mvn spring-boot:run
-```
+---
+## Como executar
+- Fazer git clone do repositorio com comando [ git clone https://github.com/ViniciusS4ntos/spring-crud-api.git ]
+- Ter o **JDK 21** instalado
+- Ter o **Docker**
+- Abrir o repositorio por alguma ide ( Prefira Intelij )
+- usar o comando [ mvn clean package ] para gerar um .jar
+- usar  o comando [ docker build -t spring-crud-api .
+- usar o comando [ docker run -p 8080:8080 spring-crud-api ]
+- e fazer bom uso
 
 ## 🔗 Exemplos de uso com Query Params
 

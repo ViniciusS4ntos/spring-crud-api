@@ -15,9 +15,8 @@ import lombok.*;
 @Builder
 public class UserDTORequest {
 
-    @Column(name = "email", unique = true)
+    private Long id;
     private String email;
-
-    @Column(name = "nome")
     private String nome;
+
 }

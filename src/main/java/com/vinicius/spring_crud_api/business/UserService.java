@@ -36,13 +36,15 @@ public class UserService {
 
     // Deletar Por Email
     public void deletarPorEmail(String email) {
-        userRepository.deleteByEmail(email);
+        userRepository.deleteByEmail(email).orElseThrow(
+                () -> new ResourceNotFoundException("email nao encontrado " + email)
+        );
     }
 
     // Atualizar Por id
     public UserDTOResponse atualizarPorId(Long id, UserDTORequest dto) {
         User entity = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Id nao encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Id nao encontrado " + id));
 
         entity.setEmail(dto.getEmail() != null ? dto.getEmail() : entity.getEmail());
         entity.setNome(dto.getNome() != null ? dto.getNome() : entity.getNome());
@@ -55,7 +57,7 @@ public class UserService {
     // Email existente no banco
     public Boolean existeEmail(String email) {
         if (userRepository.existsByEmail(email)) {
-            throw new EmailExistenteException("Email existente no banco ");
+            throw new EmailExistenteException("Email existente no banco " + email);
         }
         return false;
     }

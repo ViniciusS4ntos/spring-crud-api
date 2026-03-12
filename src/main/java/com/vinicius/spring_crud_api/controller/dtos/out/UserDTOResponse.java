@@ -10,10 +10,8 @@ import lombok.*;
 @Builder
 public class UserDTOResponse {
 
-    @Column(name = "email", unique = true)
+    private Long id;
     private String email;
-
-    @Column(name = "nome")
     private String nome;
 
 }

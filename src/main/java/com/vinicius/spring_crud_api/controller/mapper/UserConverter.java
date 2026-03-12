@@ -11,6 +11,7 @@ public class UserConverter {
     //Entity -> DTOResponse
     public UserDTOResponse paraDTO(User user){
         return UserDTOResponse.builder()
+                .id(user.getId())
                 .email(user.getEmail() != null ? user.getEmail() : null)
                 .nome(user.getNome() != null ? user.getNome() : null)
                 .build();
@@ -19,6 +20,7 @@ public class UserConverter {
     // Request -> entity
     public User paraDTORequest(UserDTORequest entity){
         return User.builder()
+                .id(entity.getId())
                 .email(entity.getEmail())
                 .nome(entity.getNome())
                 .build();
